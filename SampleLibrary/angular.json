@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "demolibrary": {
+      "projectType": "library",
+      "root": "projects/demolibrary",
+      "sourceRoot": "projects/demolibrary/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/demolibrary/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/demolibrary/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/demolibrary/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/demolibrary/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "36caf8e0-9ea7-4990-ae4d-5b635f4563c3"
+  }
+}
